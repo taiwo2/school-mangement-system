@@ -2,7 +2,6 @@ import  React,{useState} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import axios from "axios";
 import http from './httpService';
 
 export default function CreateStudent() {
@@ -14,37 +13,14 @@ export default function CreateStudent() {
   })
 
   const handleSubmit =  async() => {
-    const newStudent= {
-      grade: student.grade,
-      section: student.section,
-      studentName: student.studentName,
-      regNo: student.regNo
-    }
-     await http.post("http://localhost:5000/students",student)
-  
-    // try{
-    //   await fetch('http://localhost:5000/students',{
-    //     method: 'POST',
-    //     headers: {'content-type': 'application/json'},
-    //     body: JSON.stringify(student),
-    //     mode: 'no-cors'
-    //   })
-    // } catch(err) {
-    //   console.log(err)
-    // }
-    // const headers = {
-    //   "Content-Type": "application/json",
-    //   Authorization: apiKey,
-    // };
-    
-    // try{
-    //   await axios.post("http://localhost:5000/students",student)
-      
-    // } catch(err){
-    //   console.log(err)
-    // }
-    
-
+   try {
+    await http.post("http://localhost:5000/students",student)
+      .then(() => {
+        window.location.reload(false);
+      })
+   } catch(err){
+     console.log(err)
+   }
   }
 
   return (
@@ -56,7 +32,6 @@ export default function CreateStudent() {
       noValidate
       autoComplete="off"
     >
-      <form>
       <h1>Create Students</h1>
       <TextField id="outlined-basic" label="Registration" variant="standard"
         value={student.regNo} onChange={(e) => setStudent({...student, regNo: e.target.value})} />
@@ -66,8 +41,7 @@ export default function CreateStudent() {
         value={student.grade} onChange={(e) => setStudent({...student, grade: e.target.value})} />
       <TextField id="outlined-basic" label="Section" variant="standard"
         value={student.section} onChange={(e) => setStudent({...student, section: e.target.value})} />
-      <Button variant="contained" color="primary"  onClick={handleSubmit}>Create</Button>
-      </form>
+      <Button variant="contained" color="primary" style={{marginTop: "10px"}} onClick={handleSubmit}>Create</Button>
     </Box>
   );
 }
