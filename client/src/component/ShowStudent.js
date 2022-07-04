@@ -34,7 +34,6 @@ export default function ShowStudent() {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            {/* <TableCell>Dessert (100g serving)</TableCell> */}
             <TableCell align="left">Name</TableCell>
             <TableCell align="right">Registration No</TableCell>
             <TableCell align="right">Grade</TableCell>
@@ -52,7 +51,6 @@ export default function ShowStudent() {
                 {student.studentName}
               </TableCell>
               <TableCell align="right">{student.regNo}</TableCell>
-              {/* <TableCell align="right">{student.studentName}</TableCell> */}
               <TableCell align="right">{student.grade}</TableCell>
               <TableCell align="right">{student.section}</TableCell>
               <TableCell align="right">
