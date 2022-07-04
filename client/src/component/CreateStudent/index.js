@@ -41,7 +41,7 @@ export default function CreateStudent() {
         value={student.grade} onChange={(e) => setStudent({...student, grade: e.target.value})} />
       <TextField id="outlined-basic" label="Section" variant="standard"
         value={student.section} onChange={(e) => setStudent({...student, section: e.target.value})} />
-      <Button variant="contained" color="primary" style={{marginTop: "10px"}} onClick={handleSubmit}>Create</Button>
+      <Button variant="contained" color="primary" style={{marginTop: "12px"}} onClick={handleSubmit}>Create</Button>
     </Box>
   );
 }
